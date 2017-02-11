@@ -8,6 +8,7 @@ public class EnemyScript : MonoBehaviour {
     private bool down;
     private int downFrames;
     private bool direction;
+    public GameObject bullet;
     // Use this for initialization
     void Start () {
         trans = transform;
@@ -19,11 +20,17 @@ public class EnemyScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-            
-        if(!down)
+
+        
+
+        if (!down)
         {
             if(direction)
             {
+                if (Random.value > 0.999) //%50 percent chance
+                {//code here
+                    Instantiate(bullet, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), transform.rotation);
+                }
                 trans.Translate(0.1f * 0.5f, 0, 0);
                 border1--;
                 if (border1 == 0)
@@ -33,6 +40,11 @@ public class EnemyScript : MonoBehaviour {
             }
             else
             {
+
+                if (Random.value > 0.999) //%50 percent chance
+                {//code here
+                    Instantiate(bullet, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), transform.rotation);
+                }
                 trans.Translate(-0.1f * 0.5f, 0, 0);
                 border1--;
                 if (border1 == 0)
