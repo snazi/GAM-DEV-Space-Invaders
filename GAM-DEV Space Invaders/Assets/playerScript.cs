@@ -5,14 +5,12 @@ using UnityEngine;
 public class playerScript : MonoBehaviour {
     private Transform trans;
 	public GameObject bullet;
-    private int noBullet =0;
+
     private GameObject[] getCount;
 
     // Use this for initialization
     void Start () {
         trans = transform;
-
-  
     }
 	
 	// Update is called once per frame
@@ -23,24 +21,19 @@ public class playerScript : MonoBehaviour {
         else if (offsetX < 0)
             trans.Translate(offsetX*0.5f, 0, 0);
 
-
+        
         getCount = GameObject.FindGameObjectsWithTag("bullet");
         int count = getCount.Length;
 
-        float fire = Input.GetAxis("Jump");
-		if(fire > 0.5f && count < 4)
+        if (Input.GetKeyDown("space") && count < 2)
 		{
             Instantiate(bullet, new Vector3(transform.position.x, transform.position.y+1, transform.localPosition.z), transform.rotation);
-            noBullet++;
         }
 	
-
-
-
 	}
 
 	void OnCollisionEnter(Collision col){
-		Destroy (col.gameObject);
-		//Reset Game
-	}
+            Destroy(col.gameObject);
+        //Reset Game
+    }
 }
