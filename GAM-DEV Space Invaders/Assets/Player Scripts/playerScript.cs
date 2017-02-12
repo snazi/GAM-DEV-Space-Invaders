@@ -25,7 +25,7 @@ public class playerScript : MonoBehaviour {
         getCount = GameObject.FindGameObjectsWithTag("bullet");
         int count = getCount.Length;
 
-        if (Input.GetKeyDown("space") && count < 2)
+        if (Input.GetKeyDown("space") && count < 3)
 		{
             Instantiate(bullet, new Vector3(transform.position.x, transform.position.y+1, transform.localPosition.z), transform.rotation);
         }
